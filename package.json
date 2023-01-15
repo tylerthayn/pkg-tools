@@ -1,0 +1,29 @@
+{
+  "name": "@tyler.thayn/pkg-tools",
+  "version": "0.1.0",
+  "description": "Various development and management tools for design packages/repos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerthayn/pkg-tools.git"
+  },
+  "keywords": [
+    "pkg",
+    "package",
+    "tools",
+    "build",
+    "templates",
+    "grunt",
+    "init",
+    "scaffolds"
+  ],
+  "author": "Tyler Thayn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylerthayn/pkg-tools/issues"
+  },
+  "homepage": "https://github.com/tylerthayn/pkg-tools#readme"
+}
