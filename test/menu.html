@@ -1,0 +1,13 @@
+{{#Each this}}
+	<h3>{{_name}}</h3>
+	<ul>
+	{{#Each this}}
+		<a href="{{_.longname}}">{{_.name}}</a>
+		<ul>
+		{{#Each this}}
+			<{{_.kind}}>{{_.name}}</{{_.kind}}>
+		{{/Each}}
+		</ul>
+	{{/Each}}
+	</ul>
+{{/Each}}

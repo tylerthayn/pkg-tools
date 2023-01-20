@@ -4,6 +4,7 @@
   "description": "Various development and management tools for design packages/repos.",
   "main": "index.js",
   "scripts": {
+    "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,5 +26,14 @@
   "bugs": {
     "url": "https://github.com/tylerthayn/pkg-tools/issues"
   },
-  "homepage": "https://github.com/tylerthayn/pkg-tools#readme"
+  "homepage": "https://github.com/tylerthayn/pkg-tools#readme",
+  "devDependencies": {
+    "grunt-contrib-jshint": "^3.2.0"
+  },
+  "dependencies": {
+    "docdash": "^2.0.1",
+    "jsdoc": "^4.0.0",
+    "moment": "^2.29.4",
+    "sanitize-html": "^2.8.1"
+  }
 }
