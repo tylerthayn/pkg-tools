@@ -28,15 +28,15 @@ Various development and management tools for design packages/repos.
 ### Modules
 #### **Handlebars**
 <ul>
-<li>~s~ Get(key, value)	=>	{*}</li>
+<li>&#8716; Get(key, value)	=>	{*}</li>
 
-<li>~s~ Render(name, context, options)	=>	{string}</li>
+<li>&#8716; Render(name, context, options)	=>	{string}</li>
 
-<li>~s~ Set(key, value)	=>	{object}</li>
+<li>&#8716; Set(key, value)	=>	{object}</li>
 
-<li>~s~ registerTemplate(name, template, options)	=>	{object}</li>
+<li>&#8716; registerTemplate(name, template, options)	=>	{object}</li>
 
-<li>~s~ unregisterTemplate(name)	=>	{Handlebars}</li>
+<li>&#8716; unregisterTemplate(name)	=>	{Handlebars}</li>
 </ul>
 
 
