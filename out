@@ -1,0 +1,193 @@
+Running "jshint:default" (jshint) task
+>> 5 files lint free.
+
+Running "readme:default" (readme) task
+OUTLINE
+	<h3>classes</h3>
+	<ul>
+		<h3>Array</h3>
+			Delete
+			{}
+			
+,			DeleteAt
+			{}
+			
+,			Difference
+			{}
+			
+,			first
+			{}
+			
+,			Flatten
+			{}
+			
+,			From
+			{}
+			
+,			head
+			{}
+			
+,			Intersection
+			{}
+			
+,			IsArray
+			{}
+			
+,			last
+			{}
+			
+,			Omit
+			{}
+			
+,			OmitAt
+			{}
+			
+,			Pick
+			{}
+			
+,			Shuffle
+			{}
+			
+,			tail
+			{}
+			
+,			Union
+			{}
+			
+,			Unique
+			{}
+			
+,			Xor
+			{}
+			
+,		<h3>Function</h3>
+			Debug
+			{}
+			
+,			Delay
+			{}
+			
+,			Noop
+			{}
+			
+,		<h3>Object</h3>
+			Extensions
+			{
+	"EventEmitter": {}
+}
+			
+,			Clone
+			{}
+			
+,			Define
+			{}
+			
+,			Each
+			{}
+			
+,			Extend
+			{}
+			
+,			Get
+			{}
+			
+,			Has
+			{}
+			
+,			Includes
+			{}
+			
+,			IsEqual
+			{}
+			
+,			Keys
+			{}
+			
+,			Merge
+			{}
+			
+,			Paths
+			{}
+			
+,			Pick
+			{}
+			
+,			Set
+			{}
+			
+,			Trim
+			{}
+			
+,			Type
+			{}
+			
+,		<h3>String</h3>
+			AsAscii
+			{}
+			
+,			AsBase64
+			{}
+			
+,			AsUrlMatch
+			{}
+			
+,			CamelCase
+			{}
+			
+,			Capitalize
+			{}
+			
+,			Hash
+			{}
+			
+,			IsBase64
+			{}
+			
+,			IsEmpty
+			{}
+			
+,			IsJson
+			{}
+			
+,			Pad
+			{}
+			
+,			Repeat
+			{}
+			
+	</ul>
+,	<h3>modules</h3>
+	<ul>
+		<h3>pkg-tools/tasks/bump</h3>
+,		<h3>core</h3>
+			tyler
+			{}
+			
+,			Plugin
+			{}
+			
+,			TOptions
+			{}
+			
+	</ul>
+,	<h3>namespaces</h3>
+	<ul>
+		<h3>tyler</h3>
+	</ul>
+,	<h3>global</h3>
+	<ul>
+		<h3>global</h3>
+,		<h3>Clone</h3>
+,		<h3>Define</h3>
+,		<h3>Extend</h3>
+,		<h3>IsEqual</h3>
+,		<h3>log</h3>
+,		<h3>logj</h3>
+,		<h3>Merge</h3>
+,		<h3>Type</h3>
+,		<h3>Uuid</h3>
+	</ul>
+
+Warning: expected an object, function, or array Use --force to continue.
+
+Aborted due to warnings.

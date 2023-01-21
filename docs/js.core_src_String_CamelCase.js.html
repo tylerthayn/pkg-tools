@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>js.core/src/String/CamelCase.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+	<!--<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">-->
+	<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+	<link type="text/css" rel="stylesheet" href="styles/jquery-ui.css">
+	<link type="text/css" rel="stylesheet" href="styles/tts.css">
+
+    <script src="scripts/nav.js" defer></script>
+    
+    <script src="scripts/commonNav.js" defer></script>
+    
+
+	<script src="scripts/web.core.js" data-main="scripts/main" defer></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+
+<nav style="display:none;" >
+	
+	
+</nav>
+
+<i class="material-icons ShowMenu">more_vert</i>
+
+<div id="main">
+    
+    <h1 class="page-title">js.core/src/String/CamelCase.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+* String converted to camel case
+* @memberof String#
+* @instance
+* @function CamelCase
+* @param {boolean} [UpperCamel] - Set if Upper Camel Case
+* @returns {string} text - Text with camel case
+*/
+const preserveCamelCase=a=>{let b=!1,d=!1,e=!1;for(let f=0;f&lt;a.length;f++){const g=a[f];b&amp;&amp;/[a-zA-Z]/.test(g)&amp;&amp;g.toUpperCase()===g?(a=a.slice(0,f)+'-'+a.slice(f),b=!1,e=d,d=!0,f++):d&amp;&amp;e&amp;&amp;/[a-zA-Z]/.test(g)&amp;&amp;g.toLowerCase()===g?(a=a.slice(0,f-1)+'-'+a.slice(f-1),e=d,d=!1,b=!0):(b=g.toLowerCase()===g,e=d,d=g.toUpperCase()===g)}return a}
+function camelCase(a,b){b=Object.assign({pascalCase:!1},b);const c=e=>b.pascalCase?e.charAt(0).toUpperCase()+e.slice(1):e;if(a=Array.isArray(a)?a.map(e=>e.trim()).filter(e=>e.length).join('-'):a.trim(),0===a.length)return'';if(1===a.length)return b.pascalCase?a.toUpperCase():a.toLowerCase();if(/^[a-z\d]+$/.test(a))return c(a);const d=a!==a.toLowerCase();return d&amp;&amp;(a=preserveCamelCase(a)),a=a.replace(/^[_.\- ]+/,'').toLowerCase().replace(/[_.\- ]+(\w|$)/g,(e,f)=>f.toUpperCase()),c(a)}
+function CamelCase(){const a=camelCase.apply(camelCase,arguments);return a.charAt(0).toUpperCase()+a.slice(1)}
+
+Define(String.prototype, 'CamelCase', function (upper) {
+	return (typeof upper !== 'undefined' &amp;&amp; upper === true) ? CamelCase(this) : camelCase(this)
+})
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+    
+</div>
+
+<br class="clear">
+
+
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

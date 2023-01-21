@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>js.core/src/String/AsAscii.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+	<!--<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">-->
+	<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+	<link type="text/css" rel="stylesheet" href="styles/jquery-ui.css">
+	<link type="text/css" rel="stylesheet" href="styles/tts.css">
+
+    <script src="scripts/nav.js" defer></script>
+    
+    <script src="scripts/commonNav.js" defer></script>
+    
+
+	<script src="scripts/web.core.js" data-main="scripts/main" defer></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+
+<nav style="display:none;" >
+	
+	
+</nav>
+
+<i class="material-icons ShowMenu">more_vert</i>
+
+<div id="main">
+    
+    <h1 class="page-title">js.core/src/String/AsAscii.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+* String as ascii text
+* @memberof String#
+* @instance
+* @function AsAscii
+* @returns {string} text - The ascii text
+*/
+Define(String.prototype, 'AsAscii', function (test) {
+	try {
+		if (typeof Buffer === 'function' &amp;&amp; 'from' in Buffer) {return Buffer.from(this, 'base64').toString('ascii')} //NodeJs
+		if (typeof atob === 'function') {return atob(this)} //Browser
+		if (typeof Utilities === 'object' &amp;&amp; 'base64Decode' in Utilities) {return Utilities.newBlob(Utilities.base64Decode(this, Utilities.Charset.UTF_8)).getDataAsString()} //GScripts
+	} catch (e) {if (typeof test !== 'boolean' || test === false) {console.log(`String.AsAscii('${this}'): invalid conversion`)}}
+	return this
+})
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+    
+</div>
+
+<br class="clear">
+
+
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

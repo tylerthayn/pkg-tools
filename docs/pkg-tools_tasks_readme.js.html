@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>pkg-tools/tasks/readme.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+	<!--<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">-->
+	<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+	<link type="text/css" rel="stylesheet" href="styles/jquery-ui.css">
+	<link type="text/css" rel="stylesheet" href="styles/tts.css">
+
+    <script src="scripts/nav.js" defer></script>
+    
+    <script src="scripts/commonNav.js" defer></script>
+    
+
+	<script src="scripts/web.core.js" data-main="scripts/main" defer></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+
+<nav style="display:none;" >
+	
+	
+</nav>
+
+<i class="material-icons ShowMenu">more_vert</i>
+
+<div id="main">
+    
+    <h1 class="page-title">pkg-tools/tasks/readme.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileoverview GruntJs task to generate project documentation.
+ * @copyright Tyler Thayn 2023
+ * @author Tyler Thayn &lt;tylertthayn@gmail.com>
+ * @license MIT
+ *
+ * @module pkg-tools/tasks/docs
+ */
+
+/**
+* Task Options
+* @typedef {object} Options
+* @property {boolean|string} [ast] - AST output file or false to skip
+* @property {object} jsdoc
+* @property {string} [jsdoc.path] - path to jsdoc program
+* @property {string} jsdoc.config - path to jsdoc config
+* @property {object} [options] - options passed to template()
+* @property {null|string} [output] - Output folder or null (stdout)
+* @property {string} template - Template path
+*/
+
+require('@tyler.thayn/js.core')
+let ChildProcess = require('child_process')
+let DocsGenerator = require('../lib/DocsGenerator')
+let $path = require('path')
+
+let defaults = {
+	ast: './tmp/ast',
+	jsdoc: {
+		path: $path.resolve($path.dirname(process.argv[0]), 'jsdoc.cmd'),
+		config: $path.resolve('./jsdoc.conf')
+	},
+	options: {},
+	output: null,
+	template: $path.resolve(__dirname, '../templates/docs')
+}
+
+module.exports = function (grunt) {
+	grunt.registerMultiTask('docs', 'Generate package documentation', function() {
+		this.requires('jshint')
+		let done = this.async()
+		let options = this.options(defaults)
+
+		let generator = new DocsGenerator({
+			log: grunt.log,
+			template: options.template
+		})
+
+		generator.Generate(this.files[0].src).then(done).catch(done)
+
+	})
+}
+
+
+/*
+
+		let options = this.options(defaults)
+		let template = require($path.resolve(options.template))
+
+		grunt.log.write('Generating ast...')
+		let cp = ChildProcess.spawn(options.jsdoc.path, ['-c', options.jsdoc.config, '-X'])
+		let data = ''
+		cp.stdout.on('data', chunk => {data += chunk.toString()})
+		cp.on('close', code => {
+			grunt.log.ok()
+
+			data = JSON.parse(data)
+			if (options.ast) {
+				grunt.log.write('Writing ast to file "'+options.ast+'"...')
+				grunt.file.write(options.ast, data)
+				grunt.log.ok()
+			}
+
+			grunt.log.write('Calling template()...')
+			let ret = template(data, options.output, options.options || {})
+			if (Type(ret, 'promise')) {
+				ret.then(() => {
+					grunt.log.ok()
+					done(true)
+				}).catch(error => {
+					grunt.fatal(error)
+					done(error)
+				})
+			} else {
+				grunt.log.ok()
+				done(true)
+			}
+		})
+		cp.on('error', (error) => {
+			grunt.fatal(error)
+			done(error)
+		})
+*/
+
+
+/**
+* @example &lt;caption>Basic Usage&lt;/caption>
+* module.exports = function(grunt) {
+*	grunt.initConfig({
+*		docs: {
+*			default: {
+*				options: {
+*					output: './docs',
+*					template: './node_modules/@tyler.thayn/pkg-tools/templates/docs'
+*				}
+*			},
+*			readme: {
+*				options: {
+*					output: './docs',
+*					template: './node_modules/@tyler.thayn/pkg-tools/templates/readme'
+*				}
+*			}
+*		},
+*		jshint: {
+*			default: {
+*				src: ['Gruntfile.js', 'tasks/*.js'],
+*				options: {
+*					jshintrc: '.jshintrc'
+*				}
+*			}
+*		}
+*	})
+*
+*	grunt.loadNpmTasks('grunt-contrib-jshint')
+*	grunt.loadNpmTasks('@tyler.thayn/pkg-tools')
+*	grunt.registerTask('default', ['jshint', 'docs:readme', 'docs:default'])
+*}
+*/
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+    
+</div>
+
+<br class="clear">
+
+
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

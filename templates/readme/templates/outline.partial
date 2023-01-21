@@ -1,0 +1,19 @@
+{{#Each this 'Name'}}
+	{{#if (HasChildren value)}}
+### {{Capitalize name}}
+		{{#if (Equals name 'global')}}
+			{{#Each value 'Kind>Name'}}
+{{> item value._}}
+			{{/Each}}
+		{{else}}
+			{{#Each value 'Name'}}
+#### **{{value._.name}}**
+<ul>
+				{{#Each value 'Scope>Kind>Name'}}
+{{> item value._}}
+				{{/Each}}
+</ul>
+			{{/Each}}
+		{{/if}}
+	{{/if}}
+{{/Each}}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>js.core/src/Array/Intersection.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+	<!--<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">-->
+	<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+	<link type="text/css" rel="stylesheet" href="styles/jquery-ui.css">
+	<link type="text/css" rel="stylesheet" href="styles/tts.css">
+
+    <script src="scripts/nav.js" defer></script>
+    
+    <script src="scripts/commonNav.js" defer></script>
+    
+
+	<script src="scripts/web.core.js" data-main="scripts/main" defer></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+
+<nav style="display:none;" >
+	
+	
+</nav>
+
+<i class="material-icons ShowMenu">more_vert</i>
+
+<div id="main">
+    
+    <h1 class="page-title">js.core/src/Array/Intersection.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+* Array Intersection
+* @memberof Array#
+* @instance
+* @function Intersection
+* @param {*} lists - Array or array list
+* @returns {array} array
+*/
+//https://github.com/juliangruber/intersect
+function many (sets) {
+  var o = {}
+  var l = sets.length - 1
+  var first = sets[0]
+  var last = sets[l]
+  for(var i in first) o[first[i]] = 0
+    for(var i = 1; i &lt;= l; i++) {
+    var row = sets[i]
+    for(var j in row) {
+      var key = row[j]
+      if(o[key] === i - 1) o[key] = i
+    }
+  }
+
+  var a = []
+  for(var i in last) {
+    var key = last[i]
+    if(o[key] === l) a.push(key)
+  }
+
+  return a
+}
+
+function intersect (a, b) {
+  if (!b) return many(a)
+
+  var res = []
+  for (var i = 0; i &lt; a.length; i++) {
+    if (indexOf(b, a[i]) > -1) res.push(a[i])
+  }
+  return res
+}
+
+intersect.big = function(a, b) {
+  if (!b) return many(a)
+
+  var ret = []
+  var temp = {}
+
+  for (var i = 0; i &lt; b.length; i++) {
+    temp[b[i]] = true
+  }
+  for (var i = 0; i &lt; a.length; i++) {
+    if (temp[a[i]]) ret.push(a[i])
+  }
+
+  return ret
+}
+
+function indexOf(arr, el) {
+  for (var i = 0; i &lt; arr.length; i++) {
+    if (arr[i] === el) return i
+  }
+  return -1
+}
+
+Define(Array.prototype, 'Intersection', function () {
+	var intArray = this
+	for (var i=0; i&lt;arguments.length; i++) {
+		intArray = intersect(intArray, arguments[i])
+	}
+	return intArray
+})
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+    
+</div>
+
+<br class="clear">
+
+
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

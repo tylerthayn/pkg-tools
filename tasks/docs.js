@@ -1,11 +1,3 @@
-/**
- * @fileoverview GruntJs task to generate project documentation.
- * @copyright Tyler Thayn 2023
- * @author Tyler Thayn <tylertthayn@gmail.com>
- * @license MIT
- *
- * @module pkg-tools/tasks/docs
- */
 
 /**
 * Task Options

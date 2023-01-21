@@ -26,12 +26,14 @@
   "bugs": {
     "url": "https://github.com/tylerthayn/pkg-tools/issues"
   },
-  "homepage": "https://github.com/tylerthayn/pkg-tools#readme",
+  "homepage": "https://github.com/tylerthayn/pkg-tools",
   "devDependencies": {
     "grunt-contrib-jshint": "^3.2.0"
   },
   "dependencies": {
     "docdash": "^2.0.1",
+    "glob": "^8.1.0",
+    "grunt-jsdoc": "^2.4.1",
     "jsdoc": "^4.0.0",
     "moment": "^2.29.4",
     "sanitize-html": "^2.8.1"
