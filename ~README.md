@@ -18,31 +18,28 @@ Various development and management tools for design packages/repos.
 ### Classes
 #### **AST**
 <ul>
-<li>&#9670; Data{object}</li>
+<li>Data{object}</li>
 
-<li>&#9670; Filter(filters)	=>	{AST}</li>
+<li>Filter(filters)	=>	{AST}</li>
 
-<li>&#9670; Outline()	=>	{object}</li>
+<li>Outline()	=>	{object}</li>
 </ul>
 
 ### Modules
 #### **Handlebars**
 <ul>
-<li>&#9671; Get(key, value)	=>	{*}</li>
+<li>~s~ Get(key, value)	=>	{*}</li>
 
-<li>&#9671; Render(name, context, options)	=>	{string}</li>
+<li>~s~ Render(name, context, options)	=>	{string}</li>
 
-<li>&#9671; Set(key, value)	=>	{object}</li>
+<li>~s~ Set(key, value)	=>	{object}</li>
 
-<li>&#9671; registerTemplate(name, template, options)	=>	{object}</li>
+<li>~s~ registerTemplate(name, template, options)	=>	{object}</li>
 
-<li>&#9671; unregisterTemplate(name)	=>	{Handlebars}</li>
+<li>~s~ unregisterTemplate(name)	=>	{Handlebars}</li>
 </ul>
 
 
 
 ## License
 Licensed under the MIT License (see [MIT](LICENSE)).
-<style>
-li {list-style: none;}
-</style>
