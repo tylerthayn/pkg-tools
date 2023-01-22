@@ -29,14 +29,25 @@
   "homepage": "https://github.com/tylerthayn/pkg-tools",
   "devDependencies": {
     "grunt-contrib-clean": "^2.0.1",
-    "grunt-contrib-jshint": "^3.2.0"
+    "grunt-contrib-jshint": "^3.2.0",
+    "jsdoc": "^4.0.0"
   },
   "dependencies": {
+    "child_process": "^1.0.2",
+    "clipboardy": "^2.3.0",
+    "commander": "^10.0.0",
     "docdash": "^2.0.1",
+    "fs": "0.0.1-security",
     "glob": "^8.1.0",
     "grunt-jsdoc": "^2.4.1",
-    "jsdoc": "^4.0.0",
+    "handlebars": "^4.7.7",
+    "jquery": "^3.6.3",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
-    "sanitize-html": "^2.8.1"
+    "path": "^0.12.7",
+    "sanitize-html": "^2.8.1",
+    "taffydb": "^2.7.3",
+    "underscore": "^1.13.6",
+    "util": "^0.12.5"
   }
 }
