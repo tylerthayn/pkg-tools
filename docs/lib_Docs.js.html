@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>tasks/readme.js - Documentation</title>
+    <title>lib/Docs.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -46,7 +46,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">tasks/readme.js</h1>
+    <h1 class="page-title">lib/Docs.js</h1>
     
 
     
@@ -57,54 +57,63 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @fileoverview GruntJs task to generate package README
- * @copyright Tyler Thayn 2023
- * @author Tyler Thayn &lt;tylertthayn@gmail.com>
- * @license MIT
- *
- * @module tasks/readme
- */
+* @module Docs
+*/
 require('@tyler.thayn/js.core')
-let Docs = require('../lib/Docs')
 let $fs = require('fs-extra')
 let $path = require('path')
 let AST = require('../lib/AST')
 
 /**
-* Readme Task Options
-* @typedef {object} module:tasks/readme~Options
+* Docs Options
+* @typedef {object} module:Docs~Options
 * @property {boolean|string} [ast] - AST output file or false to skip
 * @property {null|string} [output] - Output folder or null (stdout)
 * @property {string} template - Template path
 */
 let defaults = {
 	ast: './tmp/package.ast',
+	log: process.stdout,
 	output: './README.md',
-	template: './build/templates/README.md'
+	pkg: './package.json',
+	template: './build/templates/README.md',
+	type: 'readme'
 }
 
-module.exports = function (grunt) {
-	grunt.registerMultiTask('readme', 'Generate README.md', function() {
-		this.requires('jshint')
-		let done = this.async()
-		let options = this.options(defaults)
+module.exports = (files, options = {}) => {
+	return new Promise((resolve, reject) => {
+		options = Extend({}, defaults, options)
 
-		Docs(this.files.map(f => f.src), Extend({}, options, {log: grunt.log})).then(done).catch(done)
+		options.log.write('Generating AST...')
+		AST.Load(files).then(ast => {
+			options.log.write('ok\n')
 
-		/*
-		AST.Load(this.files.map(f => f.src)).then(ast => {
 			if (options.ast) {
+				options.log.write(`Saving AST (${options.ast})...`)
 				$fs.ensureDirSync($path.dirname($path.resolve(options.ast)))
 				$fs.writeFileSync(options.ast, JSON.stringify(ast, null, '\t'), 'utf-8')
+				options.log.write(`ok\n`)
 			}
-			require($path.resolve(__dirname, '../templates/readme/index.js'))(ast, JSON.parse($fs.readFileSync('./package.json', 'utf-8')), options).then(readme => {
-				$fs.writeFileSync(options.output, readme.toString(), 'utf-8')
-				done(true)
-			}).catch(done)
-		}).catch(done)
-		*/
+
+			options.log.write(`Loading Builder (${options.type})...`)
+			let Build = require(options.type == 'readme' ?
+				$path.resolve(__dirname, '../templates/readme/index.js')
+				:
+				$path.resolve(__dirname, '../templates/docs/index.js')
+			)
+			options.log.write(`ok\n`)
+
+			options.log.write(`Starting build...`)
+			Build(ast, options).then(() => {
+				options.log.write(`ok\n`)
+				resolve()
+			}).catch(reject)
+
+		}).catch(reject)
+
 	})
 }
+
 </code></pre>
         </article>
     </section>

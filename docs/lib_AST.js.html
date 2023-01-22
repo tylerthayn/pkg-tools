@@ -56,7 +56,11 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>
+            <pre class="prettyprint source linenums"><code>let ChildProcess = require('child_process')
+let $path = require('path')
+
+let JsDoc = $path.resolve($path.dirname(process.argv[0]), 'jsdoc.cmd')
+
 function Filter(ast, filters) {
     let _ast = Clone(ast);
     filters.Keys().forEach(key => {
@@ -79,11 +83,7 @@ function StringifyParam(param) {
 * @param {array} ast
 */
 function AST (ast) {
-	if (typeof ast === 'string') {
-		ast = JSON.parse($fs.readFileSync(ast, 'utf-8'))
-	}
-
-	ast = ast.filter(t => t.Get('comment', '') !== '')
+	ast = ast.filter(t => ((t.Get('comment', '') !== '') || (t.Get('files', []).length > 0)))
 
 	/**
 	* @memberof AST#
@@ -168,21 +168,37 @@ function AST (ast) {
 		}
 
 		return o
-
-
-		/*
-		this.Filter({memberof: item.longname, scope: 'inner'})
-		this.Filter({memberof: item.longname, scope: 'static', kind: 'member'})
-		this.Filter({memberof: item.longname, scope: 'static', kind: 'function'})
-		this.Filter({memberof: item.longname, scope: 'instance', kind: 'member'})
-		this.Filter({memberof: item.longname, scope: 'instance', kind: 'function'})
-		*/
-
 	})
 
 	return ast
 }
 
+/**
+* @async
+* @memberof AST.
+* @function Load
+* @param {(string|string[])} file - JSON string or Array of file paths
+* @returns {Promise.&lt;AST>} ast
+*/
+Define(AST, 'Load', (file) => {
+	return new Promise((resolve, reject) => {
+		if (typeof file === 'string') {
+			$fs.readFile(file, 'utf-8', (error, contents) => {
+				if (error) {return reject(error)}
+				return resolve(new AST(JSON.parse(contents)))
+			})
+		} else if (Array.isArray(file)) {
+			let data = '', cp = ChildProcess.spawn(JsDoc, [...Array.Flatten(file), '-c', $path.resolve(__dirname, 'jsdoc.conf'), '-X'])
+			cp.stdout.on('data', chunk => {data += chunk.toString()})
+			cp.on('close', code => {
+				resolve(new AST(JSON.parse(data.toString())))
+			})
+			cp.on('error', reject)
+		} else {
+			return reject('Invalid AST file')
+		}
+	})
+})
 
 module.exports = AST
 

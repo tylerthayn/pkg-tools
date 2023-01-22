@@ -4,7 +4,7 @@
  * @author Tyler Thayn <tylertthayn@gmail.com>
  * @license MIT
  *
- * @module pkg-tools/tasks/bump
+ * @module tasks/bump
  */
 
 module.exports = function(grunt) {

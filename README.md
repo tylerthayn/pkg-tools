@@ -1,72 +1,102 @@
-## Classes
-### Array
-	(s) Flatten(depth {number})	=>	{array}
-	(s) From(value {*})	=>	{array}
-	(s) IsArray(object {object})	=>	{boolean}
-	(i) first{*}
-	(i) head{array}
-	(i) last{*}
-	(i) tail{array}
-	(i) Delete(elements {*}, array {array})
-	(i) DeleteAt(indexes {number}, array {array})
-	(i) Difference(lists {*})	=>	{array}
-	(i) Intersection(lists {*})	=>	{array}
-	(i) Omit(elements {*})	=>	{array}
-	(i) OmitAt(indexes {*})	=>	{array}
-	(i) Pick(elements {*})	=>	{array}
-	(i) Shuffle()
-	(i) Union(lists {*})	=>	{array}
-	(i) Unique(lists {*})	=>	{array}
-	(i) Xor(lists {array}, array {array})
-### Function
-	(s) Debug(name {string}, logFn {function}, (callback} )
-	(s) Delay(time {number}, cb {callback}, args {*})
-	(s) Noop()
-### Object
-	(s) Extensions
-	(i) Clone()	=>	{object}
-	(i) Define(name {string}, value {*}, enumerable {boolean})	=>	{object}
-	(i) Each(fn {function}, this {object})
-	(i) Extend(source {object|array})	=>	{object}
-	(i) Get(path {string}, default {*})	=>	{*}
-	(i) Has(paths {Array.<string>})	=>	{boolean}
-	(i) Includes(paths {Array.<string>})	=>	{boolean}
-	(i) IsEqual(objects {Array.<object>})	=>	{boolean}
-	(i) Keys()	=>	{array}
-	(i) Merge(sources {object|array})	=>	{object}
-	(i) Paths(depth {number}, paths {array})
-	(i) Pick(paths {string|Array.<string>})	=>	{object}
-	(i) Set(path {string}, value {*})	=>	{object}
-	(i) Trim()	=>	{object}
-	(i) Type(compare {string|object})	=>	{string|boolean}
-### String
-	(i) AsAscii()	=>	{string}
-	(i) AsBase64()	=>	{string}
-	(i) AsUrlMatch()	=>	{string}
-	(i) CamelCase(UpperCamel {boolean})	=>	{string}
-	(i) Capitalize(AllWords {boolean})	=>	{string}
-	(i) Hash(type {string})	=>	{string}
-	(i) IsBase64()	=>	{boolean}
-	(i) IsEmpty()	=>	{boolean}
-	(i) IsJson()	=>	{boolean}
-	(i) Pad(length {number}, char {string}, rightPad {boolean})	=>	{string}
-	(i) Repeat(n {number})	=>	{string}
-## Modules
-### pkg-tools/tasks/bump
+# @tyler.thayn/pkg-tools
+[![Build Status](https://github.com/tylerthayn/pkg-tools/workflows/build/badge.svg)](https://github.com/tj/commander.js/actions?query=workflow%3A%22build%22)
+[![NPM Version](http://img.shields.io/npm/v/@tyler.thayn/pkg-tools.svg?style=flat)](https://www.npmjs.org/package/@tyler.thayn/pkg-tools)
+[![NPM Downloads](https://img.shields.io/npm/dm/@tyler.thayn/pkg-tools.svg?style=flat)](https://npmcharts.com/compare/@tyler.thayn/pkg-tools?minimal=true)
+[![license](https://img.shields.io/npm/l/@tyler.thayn/pkg-tools.svg)](LICENSE)
+Various development and management tools for design packages/repos.
 
-### core
+## Installation
+	npm install @tyler.thayn/pkg-tools --save-dev
 
-## Namespaces
-### tyler
+## Usage
+1. Run pkg init tools
+```dos
+pkg-tools pkg merge
+pkg-tools pkg install
+pkg-tools copy
+```
+2. Grunt
+* Modify Gruntfile.js so that correct file paths are used
+```dos
+grunt || grunt docs
+```
+3. CLI
+```dos
+pkg-tools --help
+```
 
-## Global
-	(g) global{object}
-	(g) Clone(parent {object})	=>	{object}
-	(g) Define(obj {object}, name {string}, value {*}, enumerable {boolean})	=>	{object}
-	(g) Extend(target {object|array}, sources {object|array})	=>	{object}
-	(g) IsEqual(objects {Array.<object>})	=>	{boolean}
-	(g) Merge(target {object|array}, sources {object|array})	=>	{object|array}
-	(g) Type(item {*}, compare {string|object})	=>	{string|boolean}
-	(g) Uuid()	=>	{string}
-	(g) log(msg {string})
-	(g) logj(object {*})
+4.  README.md customization
+	* [build/templates/README.MD](./build/templates/README.md)
+
+## Code/Api
+
+### AST
+<ul>
+<li>&#8716; <b>Load</b>(file)	=>	{Promise.&lt;AST&gt;}</li>
+
+
+<li><b>Data</b>  {object}</li>
+
+
+<li><b>Filter</b>(filters)	=>	{AST}</li>
+
+
+<li><b>Outline</b>()	=>	{object}</li>
+
+</ul>
+
+
+### bin/cli
+<ul>
+<li><b>commands</b>  {object}</li>
+
+</ul>
+
+### tasks/bump
+<ul>
+</ul>
+
+### tasks/readme
+<ul>
+<li><b>Options</b></li>
+
+<ul>
+<li><b>ast</b> <i>{boolean|string}</i> AST output file or false to skip</li>
+<li><b>output</b> <i>{null|string}</i> Output folder or null (stdout)</li>
+<li><b>template</b> <i>{string}</i> Template path</li>
+</ul>
+</ul>
+
+### Handlebars
+<ul>
+<li>&#8716; <b>Get</b>(key, value)	=>	{*}</li>
+
+
+<li>&#8716; <b>Render</b>(name, context, options)	=>	{string}</li>
+
+
+<li>&#8716; <b>Set</b>(key, value)	=>	{object}</li>
+
+
+<li>&#8716; <b>registerTemplate</b>(name, template, options)	=>	{object}</li>
+
+
+<li>&#8716; <b>unregisterTemplate</b>(name)	=>	{Handlebars}</li>
+
+</ul>
+
+### Docs
+<ul>
+<li><b>Options</b></li>
+
+<ul>
+<li><b>ast</b> <i>{boolean|string}</i> AST output file or false to skip</li>
+<li><b>output</b> <i>{null|string}</i> Output folder or null (stdout)</li>
+<li><b>template</b> <i>{string}</i> Template path</li>
+</ul>
+</ul>
+
+
+
+## License
+Licensed under the MIT License (see [MIT](LICENSE)).

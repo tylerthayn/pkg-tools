@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Handlebars.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+	<!--<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">-->
+	<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+	<link type="text/css" rel="stylesheet" href="styles/jquery-ui.css">
+	<link type="text/css" rel="stylesheet" href="styles/tts.css">
+
+    <script src="scripts/nav.js" defer></script>
+    
+    <script src="scripts/commonNav.js" defer></script>
+    
+
+	<script src="scripts/web.core.js" data-main="scripts/main" defer></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+
+<nav style="display:none;" >
+	
+	
+</nav>
+
+<i class="material-icons ShowMenu">more_vert</i>
+
+<div id="main">
+    
+    <h1 class="page-title">Handlebars.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+* @module Handlebars
+*/
+
+require('@tyler.thayn/js.core')
+let Handlebars = require('handlebars')
+
+let renderer = {
+	context: {},
+	options: {},
+	templates: {}
+}
+
+/** Get Handlebars property
+* @memberof module:Handlebars.
+* @function Get
+* @param {string} key - Object path key
+* @param {*} value - Default value
+* @returns {*} property
+*/
+Define(Handlebars, 'Get', (k, v) => {
+	return renderer.Get(k, v)
+})
+
+/** Set Handlebars property
+* @memberof module:Handlebars.
+* @function Set
+* @param {string} key - object path key
+* @param {*} value - property value
+* @returns {object} Handlebars - Handlebars object for chaining
+*/
+Define(Handlebars, 'Set', (k, v) => {
+	renderer.Set(k, v)
+	return Handlebars
+})
+
+/** Register a Template
+* @memberof module:Handlebars.
+* @function registerTemplate
+* @param {string} name - template name
+* @param {string|function} template - template data, template path or template function
+* @param {object} [options] - template options to compile with
+* @returns {object} Handlebars - Handlebars object for chaining
+*/
+Define(Handlebars, 'registerTemplate', (name, template, options = {}) => {
+	if (typeof name !== 'string') {throw new Error('Template names must be a string value')}
+	name = name.replace(/\.(html|handlebars|tpl)$/, '')
+
+	if (typeof template === 'function') {
+		renderer.templates[name] = template
+	} else if (typeof template === 'string') {
+		if (!template.includes('{')) {
+			template = $fs.readFileSync($path.join(__dirname, 'templates', template), 'utf-8')
+		}
+		renderer.templates[name] = Handlebars.compile(template, options)
+	}
+	return Handlebars
+})
+
+/** Unregister a Template
+* @memberof module:Handlebars.
+* @function unregisterTemplate
+* @param {string} name - template name
+* @returns {Handlebars} Handlebars - Handlebars object for chaining
+*/
+Define(Handlebars, 'unregisterTemplate', (name) => {
+	name = name.replace(/\.(html|handlebars|tpl)$/, '')
+	try {
+		delete renderer.templates[name]
+	} catch (e) {}
+	return Handlebars
+})
+
+/** Render a tempalte
+* @memberof module:Handlebars.
+* @function Render
+* @param {string} name - template name
+* @param {object} context - template context
+* @param {object} [options] - template options
+* @returns {string} ouptut - rendered template output
+*/
+Define(Handlebars, 'Render', (name, context = {}, options = {}) => {
+	name = name.replace(/\.(html|handlebars|tpl)$/, '')
+if (name == 'typedef') {
+
+	try {
+		let out = renderer.templates[name](Extend({}, renderer.context, context), Extend({}, renderer.options, options))
+		let path = $path.resolve(Handlebars.Get('options.output', './Docs3'), context.longname.replace(/^module\:/, '')+'.html')
+
+		$fs.ensureDirSync($path.dirname(path))
+
+		$fs.ensureDirSync($path.dirname(path))
+		$fs.writeFileSync(path, out, 'utf-8')
+	} catch (e) {
+		log(e)
+		return ''
+	}
+}
+})
+
+$fs.readdirSync($path.join(__dirname, 'helpers')).forEach(entry => {
+	Handlebars.registerHelper(entry.replace(/\.js$/, ''), require($path.resolve(__dirname, 'helpers', entry)))
+})
+$fs.readdirSync($path.join(__dirname, 'partials')).forEach(entry => {
+	Handlebars.registerPartial(entry.replace(/\.(html|handlebars|tpl)$/, ''), $fs.readFileSync($path.join(__dirname, 'partials', entry), 'utf-8'))
+})
+$fs.readdirSync($path.join(__dirname, 'templates')).forEach(entry => {
+	Handlebars.registerTemplate(entry.replace(/\.(html|handlebars|tpl)$/, ''), $fs.readFileSync($path.join(__dirname, 'templates', entry), 'utf-8'))
+})
+
+/**
+* @alias module:Handlebars
+*/
+module.exports = Handlebars</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+    
+</div>
+
+<br class="clear">
+
+
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

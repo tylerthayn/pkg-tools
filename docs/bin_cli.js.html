@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>tasks/bump.js - Documentation</title>
+    <title>bin/cli.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -46,7 +46,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">tasks/bump.js</h1>
+    <h1 class="page-title">bin/cli.js</h1>
     
 
     
@@ -56,38 +56,32 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @fileoverview GruntJs task to bump package version
- * @copyright Tyler Thayn 2023
- * @author Tyler Thayn &lt;tylertthayn@gmail.com>
- * @license MIT
- *
- * @module tasks/bump
- */
+            <pre class="prettyprint source linenums"><code>/** CLI tools
+* @module bin/cli
+*/
 
-module.exports = function(grunt) {
-	grunt.registerTask('bump', 'Bump the package version', function() {
-		let pkg = grunt.file.readJSON('./package.json')
-		grunt.log.write(`version: ${pkg.version} => `)
+/**
+* @memberof module:bin/cli#
+* @member {object} commands
+*/
+const { program } = require('commander')
 
-		let version = pkg.version.split('.')
-		if (this.flags.patch) {
-			version[2]++
-		} else if (this.flags.minor) {
-			version[1]++
-			version[2] = 0
-		} else if (this.flags.major) {
-			version[0]++
-			version[1] = 0
-			version[2] = 0
-		} else {
-			grunt.fatal('No version level provided')
-		}
-		pkg.version = version.join('.')
-		grunt.log.writeln(pkg.version )
-		grunt.file.write('package.json', JSON.stringify(pkg, null, '\t'))
-	})
-}</code></pre>
+program
+	.name('pkg-tools')
+	.version('0.1.0')
+	.command('deps [cmd]', 'dependency tools')
+	.command('docs [type]', 'docs generator')
+	.command('pkg [cmd]', 'package.json tools')
+
+program
+  .command('copy')
+  .description('copy standard files')
+  .action(() => {
+    console.log('copy command called')
+  })
+
+program.parse(process.argv)
+</code></pre>
         </article>
     </section>
 

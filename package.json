@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/tylerthayn/pkg-tools",
   "devDependencies": {
+    "grunt-contrib-clean": "^2.0.1",
     "grunt-contrib-jshint": "^3.2.0"
   },
   "dependencies": {

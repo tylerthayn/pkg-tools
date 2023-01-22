@@ -1,9 +1,11 @@
 
 module.exports = function(grunt) {
 	grunt.initConfig({
+		clean: ['docs', 'README.md'],
 		jsdoc: {
 			docdash: {
-				src: ["tasks", "lib", "README.md"],
+				src: ["bin/*.js", "tasks/*.js", "lib/**/*.js", "lib/*.js", "templates/readme/**/*.js", "templates/readme/*.js", "README.md"],
+				filter: (path) => {return path.includes('!')},
 				options: {
 					"destination": "docs",
 					"template": "./templates/docdash",
@@ -11,7 +13,7 @@ module.exports = function(grunt) {
 				}
 			},
 			docstrap: {
-				src: ["tasks", "lib", "README.md"],
+				src: ["bin/*.js", "tasks/*.js", "lib/**/*.js", "lib/*.js", "templates/readme/*.js", "README.md"],
 				options: {
 					"destination": "docs",
 					"template": "./templates/docstrap",
@@ -21,7 +23,9 @@ module.exports = function(grunt) {
 		},
 		jshint: {
 			default: {
-				src: ['Gruntfile.js', 'tasks/*.js'], //, 'lib/*.js'],
+				src: ["bin/*.js", "tasks/*.js", "lib/*.js", "lib/**/*.js", "templates/readme/*.js", "README.md"],
+				filter: () => {return false},
+				//filter: function (path) {return !path.includes('!')},
 				options: {
 					jshintrc: '.jshintrc'
 				}
@@ -29,10 +33,10 @@ module.exports = function(grunt) {
 		},
 		readme: {
 			default: {
-				src: ["tasks/docs.js", "tasks/bump.js", "D:/TTS/development/js.core/src/*.js", "D:/TTS/development/js.core/src/**/*.js"],
+				src: ["bin/*.js", "tasks/*.js", "lib/**/*.js", "lib/*.js", "templates/readme/**/*.js", "templates/readme/*.js"],
 				options: {
 					output: './README.md',
-					template: 'templates/readme'
+					template: 'build/templates/README.md'
 				}
 			}
 		},
@@ -47,12 +51,13 @@ module.exports = function(grunt) {
 		}
 	})
 
+	grunt.loadNpmTasks('grunt-contrib-clean')
 	grunt.loadNpmTasks('grunt-contrib-jshint')
 	grunt.loadNpmTasks('grunt-jsdoc')
 	grunt.loadTasks('tasks')
 	grunt.registerTask('patch', ['bump:patch'])
 	grunt.registerTask('minor', ['bump:minor'])
 	grunt.registerTask('major', ['bump:major'])
-	grunt.registerTask('docs', ['readme', 'jsdoc', 'ttsdoc'])
+	grunt.registerTask('docs', ['jshint', 'readme', 'jsdoc:docdash'])
 	grunt.registerTask('default', ['jshint', 'docs'])
 }

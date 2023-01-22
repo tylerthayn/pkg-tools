@@ -1,0 +1,794 @@
+[
+	{
+		"comment": "/** CLI tools\r\n* @module bin/cli\r\n*/",
+		"meta": {
+			"filename": "cli.js",
+			"lineno": 1,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\bin",
+			"code": {}
+		},
+		"description": "CLI tools",
+		"kind": "module",
+		"name": "bin/cli",
+		"longname": "module:bin/cli"
+	},
+	{
+		"comment": "/**\r\n* @memberof module:bin/cli#\r\n* @member {object} commands\r\n*/",
+		"meta": {
+			"filename": "cli.js",
+			"lineno": 5,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\bin",
+			"code": {}
+		},
+		"memberof": "module:bin/cli",
+		"kind": "member",
+		"name": "commands",
+		"type": {
+			"names": [
+				"object"
+			]
+		},
+		"longname": "module:bin/cli#commands",
+		"scope": "instance"
+	},
+	{
+		"comment": "/**\r\n * @fileoverview GruntJs task to bump package version\r\n * @copyright Tyler Thayn 2023\r\n * @author Tyler Thayn <tylertthayn@gmail.com>\r\n * @license MIT\r\n *\r\n * @module tasks/bump\r\n */",
+		"meta": {
+			"filename": "bump.js",
+			"lineno": 1,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\tasks",
+			"code": {}
+		},
+		"name": "tasks/bump",
+		"kind": "module",
+		"description": "GruntJs task to bump package version",
+		"preserveName": true,
+		"copyright": "Tyler Thayn 2023",
+		"author": [
+			"Tyler Thayn <tylertthayn@gmail.com>"
+		],
+		"license": "MIT",
+		"longname": "module:tasks/bump"
+	},
+	{
+		"comment": "/**\r\n * @fileoverview GruntJs task to generate package README\r\n * @copyright Tyler Thayn 2023\r\n * @author Tyler Thayn <tylertthayn@gmail.com>\r\n * @license MIT\r\n *\r\n * @module tasks/readme\r\n */",
+		"meta": {
+			"filename": "readme.js",
+			"lineno": 1,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\tasks",
+			"code": {}
+		},
+		"name": "tasks/readme",
+		"kind": "module",
+		"description": "GruntJs task to generate package README",
+		"preserveName": true,
+		"copyright": "Tyler Thayn 2023",
+		"author": [
+			"Tyler Thayn <tylertthayn@gmail.com>"
+		],
+		"license": "MIT",
+		"longname": "module:tasks/readme"
+	},
+	{
+		"comment": "/**\r\n* Readme Task Options\r\n* @typedef {object} module:tasks/readme~Options\r\n* @property {boolean|string} [ast] - AST output file or false to skip\r\n* @property {null|string} [output] - Output folder or null (stdout)\r\n* @property {string} template - Template path\r\n*/",
+		"meta": {
+			"filename": "readme.js",
+			"lineno": 15,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\tasks",
+			"code": {}
+		},
+		"description": "Readme Task Options",
+		"kind": "typedef",
+		"name": "Options",
+		"type": {
+			"names": [
+				"object"
+			]
+		},
+		"properties": [
+			{
+				"type": {
+					"names": [
+						"boolean",
+						"string"
+					]
+				},
+				"optional": true,
+				"description": "AST output file or false to skip",
+				"name": "ast"
+			},
+			{
+				"type": {
+					"names": [
+						"null",
+						"string"
+					]
+				},
+				"optional": true,
+				"description": "Output folder or null (stdout)",
+				"name": "output"
+			},
+			{
+				"type": {
+					"names": [
+						"string"
+					]
+				},
+				"description": "Template path",
+				"name": "template"
+			}
+		],
+		"memberof": "module:tasks/readme",
+		"longname": "module:tasks/readme~Options",
+		"scope": "inner"
+	},
+	{
+		"comment": "/**\r\n* Task Options\r\n* @typedef {object} Options\r\n* @property {boolean|string} [ast] - AST data, ast file path, or null/false to generate.  JsDoc config must be provided if generating.\r\n* @property {object} [jsdoc] - path to jsdoc config\r\n* @property {null|string} [output] - output folder or null (stdout)\r\n* @property {string[]} [sources] - list of file & folder paths\r\n* @property {object|string} template - template or path to\r\n*/",
+		"meta": {
+			"filename": "DocsGenerator.js",
+			"lineno": 12,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib\\!",
+			"code": {}
+		},
+		"description": "Task Options",
+		"kind": "typedef",
+		"name": "Options",
+		"type": {
+			"names": [
+				"object"
+			]
+		},
+		"properties": [
+			{
+				"type": {
+					"names": [
+						"boolean",
+						"string"
+					]
+				},
+				"optional": true,
+				"description": "AST data, ast file path, or null/false to generate.  JsDoc config must be provided if generating.",
+				"name": "ast"
+			},
+			{
+				"type": {
+					"names": [
+						"object"
+					]
+				},
+				"optional": true,
+				"description": "path to jsdoc config",
+				"name": "jsdoc"
+			},
+			{
+				"type": {
+					"names": [
+						"null",
+						"string"
+					]
+				},
+				"optional": true,
+				"description": "output folder or null (stdout)",
+				"name": "output"
+			},
+			{
+				"type": {
+					"names": [
+						"Array.<string>"
+					]
+				},
+				"optional": true,
+				"description": "list of file & folder paths",
+				"name": "sources"
+			},
+			{
+				"type": {
+					"names": [
+						"object",
+						"string"
+					]
+				},
+				"description": "template or path to",
+				"name": "template"
+			}
+		],
+		"longname": "Options",
+		"scope": "global"
+	},
+	{
+		"comment": "/**\r\n* @event ast - ast change\r\n* @event error\r\n* @event source - source added\r\n* @event generated\r\n*/",
+		"meta": {
+			"filename": "DocsGenerator.js",
+			"lineno": 32,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib\\!",
+			"code": {}
+		},
+		"kind": "event",
+		"name": "generated",
+		"longname": "event:generated",
+		"scope": "global"
+	},
+	{
+		"comment": "/**\r\n* @param {string[]} [sources] - list of source file paths\r\n*/",
+		"meta": {
+			"range": [
+				1630,
+				2638
+			],
+			"filename": "DocsGenerator.js",
+			"lineno": 51,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib\\!",
+			"code": {
+				"id": "astnode100000966",
+				"name": "DocsGenerator.prototype.Generate",
+				"type": "FunctionExpression",
+				"paramnames": [
+					"sources"
+				]
+			},
+			"vars": {
+				"": null
+			}
+		},
+		"params": [
+			{
+				"type": {
+					"names": [
+						"Array.<string>"
+					]
+				},
+				"optional": true,
+				"description": "list of source file paths",
+				"name": "sources"
+			}
+		],
+		"name": "Generate",
+		"longname": "DocsGenerator#Generate",
+		"kind": "function",
+		"memberof": "DocsGenerator",
+		"scope": "instance"
+	},
+	{
+		"comment": "/**\r\n* @module Handlebars\r\n*/",
+		"meta": {
+			"filename": "Handlebars.js",
+			"lineno": 1,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib\\!",
+			"code": {}
+		},
+		"kind": "module",
+		"name": "Handlebars",
+		"longname": "module:Handlebars"
+	},
+	{
+		"comment": "/** Get Handlebars property\r\n* @memberof module:Handlebars.\r\n* @function Get\r\n* @param {string} key - Object path key\r\n* @param {*} value - Default value\r\n* @returns {*} property\r\n*/",
+		"meta": {
+			"filename": "Handlebars.js",
+			"lineno": 14,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib\\!",
+			"code": {}
+		},
+		"description": "Get Handlebars property",
+		"memberof": "module:Handlebars",
+		"kind": "function",
+		"name": "Get",
+		"params": [
+			{
+				"type": {
+					"names": [
+						"string"
+					]
+				},
+				"description": "Object path key",
+				"name": "key"
+			},
+			{
+				"type": {
+					"names": [
+						"*"
+					]
+				},
+				"description": "Default value",
+				"name": "value"
+			}
+		],
+		"returns": [
+			{
+				"type": {
+					"names": [
+						"*"
+					]
+				},
+				"description": "property"
+			}
+		],
+		"longname": "module:Handlebars.Get",
+		"scope": "static"
+	},
+	{
+		"comment": "/** Set Handlebars property\r\n* @memberof module:Handlebars.\r\n* @function Set\r\n* @param {string} key - object path key\r\n* @param {*} value - property value\r\n* @returns {object} Handlebars - Handlebars object for chaining\r\n*/",
+		"meta": {
+			"filename": "Handlebars.js",
+			"lineno": 25,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib\\!",
+			"code": {}
+		},
+		"description": "Set Handlebars property",
+		"memberof": "module:Handlebars",
+		"kind": "function",
+		"name": "Set",
+		"params": [
+			{
+				"type": {
+					"names": [
+						"string"
+					]
+				},
+				"description": "object path key",
+				"name": "key"
+			},
+			{
+				"type": {
+					"names": [
+						"*"
+					]
+				},
+				"description": "property value",
+				"name": "value"
+			}
+		],
+		"returns": [
+			{
+				"type": {
+					"names": [
+						"object"
+					]
+				},
+				"description": "Handlebars - Handlebars object for chaining"
+			}
+		],
+		"longname": "module:Handlebars.Set",
+		"scope": "static"
+	},
+	{
+		"comment": "/** Register a Template\r\n* @memberof module:Handlebars.\r\n* @function registerTemplate\r\n* @param {string} name - template name\r\n* @param {string|function} template - template data, template path or template function\r\n* @param {object} [options] - template options to compile with\r\n* @returns {object} Handlebars - Handlebars object for chaining\r\n*/",
+		"meta": {
+			"filename": "Handlebars.js",
+			"lineno": 37,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib\\!",
+			"code": {}
+		},
+		"description": "Register a Template",
+		"memberof": "module:Handlebars",
+		"kind": "function",
+		"name": "registerTemplate",
+		"params": [
+			{
+				"type": {
+					"names": [
+						"string"
+					]
+				},
+				"description": "template name",
+				"name": "name"
+			},
+			{
+				"type": {
+					"names": [
+						"string",
+						"function"
+					]
+				},
+				"description": "template data, template path or template function",
+				"name": "template"
+			},
+			{
+				"type": {
+					"names": [
+						"object"
+					]
+				},
+				"optional": true,
+				"description": "template options to compile with",
+				"name": "options"
+			}
+		],
+		"returns": [
+			{
+				"type": {
+					"names": [
+						"object"
+					]
+				},
+				"description": "Handlebars - Handlebars object for chaining"
+			}
+		],
+		"longname": "module:Handlebars.registerTemplate",
+		"scope": "static"
+	},
+	{
+		"comment": "/** Unregister a Template\r\n* @memberof module:Handlebars.\r\n* @function unregisterTemplate\r\n* @param {string} name - template name\r\n* @returns {Handlebars} Handlebars - Handlebars object for chaining\r\n*/",
+		"meta": {
+			"filename": "Handlebars.js",
+			"lineno": 60,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib\\!",
+			"code": {}
+		},
+		"description": "Unregister a Template",
+		"memberof": "module:Handlebars",
+		"kind": "function",
+		"name": "unregisterTemplate",
+		"params": [
+			{
+				"type": {
+					"names": [
+						"string"
+					]
+				},
+				"description": "template name",
+				"name": "name"
+			}
+		],
+		"returns": [
+			{
+				"type": {
+					"names": [
+						"Handlebars"
+					]
+				},
+				"description": "Handlebars - Handlebars object for chaining"
+			}
+		],
+		"longname": "module:Handlebars.unregisterTemplate",
+		"scope": "static"
+	},
+	{
+		"comment": "/** Render a tempalte\r\n* @memberof module:Handlebars.\r\n* @function Render\r\n* @param {string} name - template name\r\n* @param {object} context - template context\r\n* @param {object} [options] - template options\r\n* @returns {string} ouptut - rendered template output\r\n*/",
+		"meta": {
+			"filename": "Handlebars.js",
+			"lineno": 74,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib\\!",
+			"code": {}
+		},
+		"description": "Render a tempalte",
+		"memberof": "module:Handlebars",
+		"kind": "function",
+		"name": "Render",
+		"params": [
+			{
+				"type": {
+					"names": [
+						"string"
+					]
+				},
+				"description": "template name",
+				"name": "name"
+			},
+			{
+				"type": {
+					"names": [
+						"object"
+					]
+				},
+				"description": "template context",
+				"name": "context"
+			},
+			{
+				"type": {
+					"names": [
+						"object"
+					]
+				},
+				"optional": true,
+				"description": "template options",
+				"name": "options"
+			}
+		],
+		"returns": [
+			{
+				"type": {
+					"names": [
+						"string"
+					]
+				},
+				"description": "ouptut - rendered template output"
+			}
+		],
+		"longname": "module:Handlebars.Render",
+		"scope": "static"
+	},
+	{
+		"comment": "/**\r\n* @alias module:Handlebars\r\n*/",
+		"meta": {
+			"range": [
+				3577,
+				3604
+			],
+			"filename": "Handlebars.js",
+			"lineno": 114,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib\\!",
+			"code": {
+				"id": "astnode100001996",
+				"name": "module.exports",
+				"type": "Identifier",
+				"value": "Handlebars",
+				"paramnames": []
+			}
+		},
+		"alias": "module:Handlebars",
+		"name": "module:Handlebars",
+		"longname": "module:Handlebars",
+		"kind": "member"
+	},
+	{
+		"comment": "/**\r\n* @class AST\r\n* @param {array} ast\r\n*/",
+		"meta": {
+			"filename": "AST.js",
+			"lineno": 23,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib",
+			"code": {}
+		},
+		"kind": "class",
+		"name": "AST",
+		"params": [
+			{
+				"type": {
+					"names": [
+						"array"
+					]
+				},
+				"name": "ast"
+			}
+		],
+		"longname": "AST",
+		"scope": "global"
+	},
+	{
+		"comment": "/**\r\n\t* @memberof AST#\r\n\t* @member {object} Data\r\n\t*/",
+		"meta": {
+			"filename": "AST.js",
+			"lineno": 30,
+			"columnno": 1,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib",
+			"code": {}
+		},
+		"memberof": "AST",
+		"kind": "member",
+		"name": "Data",
+		"type": {
+			"names": [
+				"object"
+			]
+		},
+		"longname": "AST#Data",
+		"scope": "instance"
+	},
+	{
+		"comment": "/**\r\n\t* @memberof AST#\r\n\t* @function Filter\r\n\t* @param {filter[]} filters\r\n\t* @returns {AST} ast\r\n\t*/",
+		"meta": {
+			"filename": "AST.js",
+			"lineno": 42,
+			"columnno": 1,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib",
+			"code": {}
+		},
+		"memberof": "AST",
+		"kind": "function",
+		"name": "Filter",
+		"params": [
+			{
+				"type": {
+					"names": [
+						"Array.<filter>"
+					]
+				},
+				"name": "filters"
+			}
+		],
+		"returns": [
+			{
+				"type": {
+					"names": [
+						"AST"
+					]
+				},
+				"description": "ast"
+			}
+		],
+		"longname": "AST#Filter",
+		"scope": "instance"
+	},
+	{
+		"comment": "/**\r\n\t* @memberof AST#\r\n\t* @function Outline\r\n\t* @param {null|boolean|ast|doclet}\r\n\t* @returns {object} outline\r\n\t*/",
+		"meta": {
+			"filename": "AST.js",
+			"lineno": 72,
+			"columnno": 1,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib",
+			"code": {}
+		},
+		"memberof": "AST",
+		"kind": "function",
+		"name": "Outline",
+		"params": [
+			{
+				"type": {
+					"names": [
+						"null",
+						"boolean",
+						"ast",
+						"doclet"
+					]
+				}
+			}
+		],
+		"returns": [
+			{
+				"type": {
+					"names": [
+						"object"
+					]
+				},
+				"description": "outline"
+			}
+		],
+		"longname": "AST#Outline",
+		"scope": "instance"
+	},
+	{
+		"comment": "/**\r\n* @async\r\n* @memberof AST.\r\n* @function Load\r\n* @param {(string|string[])} file - JSON string or Array of file paths\r\n* @returns {Promise.<AST>} ast\r\n*/",
+		"meta": {
+			"filename": "AST.js",
+			"lineno": 118,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib",
+			"code": {}
+		},
+		"async": true,
+		"memberof": "AST",
+		"kind": "function",
+		"name": "Load",
+		"params": [
+			{
+				"type": {
+					"names": [
+						"string",
+						"Array.<string>"
+					]
+				},
+				"description": "JSON string or Array of file paths",
+				"name": "file"
+			}
+		],
+		"returns": [
+			{
+				"type": {
+					"names": [
+						"Promise.<AST>"
+					]
+				},
+				"description": "ast"
+			}
+		],
+		"longname": "AST.Load",
+		"scope": "static"
+	},
+	{
+		"comment": "/**\r\n* @module Docs\r\n*/",
+		"meta": {
+			"filename": "Docs.js",
+			"lineno": 1,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib",
+			"code": {}
+		},
+		"kind": "module",
+		"name": "Docs",
+		"longname": "module:Docs"
+	},
+	{
+		"comment": "/**\r\n* Docs Options\r\n* @typedef {object} module:Docs~Options\r\n* @property {boolean|string} [ast] - AST output file or false to skip\r\n* @property {null|string} [output] - Output folder or null (stdout)\r\n* @property {string} template - Template path\r\n*/",
+		"meta": {
+			"filename": "Docs.js",
+			"lineno": 9,
+			"columnno": 0,
+			"path": "D:\\TTS\\development\\pkg-tools\\lib",
+			"code": {}
+		},
+		"description": "Docs Options",
+		"kind": "typedef",
+		"name": "Options",
+		"type": {
+			"names": [
+				"object"
+			]
+		},
+		"properties": [
+			{
+				"type": {
+					"names": [
+						"boolean",
+						"string"
+					]
+				},
+				"optional": true,
+				"description": "AST output file or false to skip",
+				"name": "ast"
+			},
+			{
+				"type": {
+					"names": [
+						"null",
+						"string"
+					]
+				},
+				"optional": true,
+				"description": "Output folder or null (stdout)",
+				"name": "output"
+			},
+			{
+				"type": {
+					"names": [
+						"string"
+					]
+				},
+				"description": "Template path",
+				"name": "template"
+			}
+		],
+		"memberof": "module:Docs",
+		"longname": "module:Docs~Options",
+		"scope": "inner"
+	},
+	{
+		"kind": "package",
+		"longname": "package:undefined",
+		"files": [
+			"D:\\TTS\\development\\pkg-tools\\bin\\cli-deps.js",
+			"D:\\TTS\\development\\pkg-tools\\bin\\cli-docs-readme.js",
+			"D:\\TTS\\development\\pkg-tools\\bin\\cli-docs.js",
+			"D:\\TTS\\development\\pkg-tools\\bin\\cli-pkg-copy.js",
+			"D:\\TTS\\development\\pkg-tools\\bin\\cli-pkg-merge.js",
+			"D:\\TTS\\development\\pkg-tools\\bin\\cli-pkg.js",
+			"D:\\TTS\\development\\pkg-tools\\bin\\cli.js",
+			"D:\\TTS\\development\\pkg-tools\\tasks\\bump.js",
+			"D:\\TTS\\development\\pkg-tools\\tasks\\readme.js",
+			"D:\\TTS\\development\\pkg-tools\\lib\\!\\DocsGenerator.js",
+			"D:\\TTS\\development\\pkg-tools\\lib\\!\\Handlebars.js",
+			"D:\\TTS\\development\\pkg-tools\\lib\\!\\Template.js",
+			"D:\\TTS\\development\\pkg-tools\\lib\\AST.js",
+			"D:\\TTS\\development\\pkg-tools\\lib\\Docs.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\Capitalize.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\Doclet.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\Each.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\Equals.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\index.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\Join.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\JSON.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\Location.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\Params.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\Returns.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\Scope.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\helpers\\Types.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\index.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\partials\\index.js",
+			"D:\\TTS\\development\\pkg-tools\\templates\\readme\\templates\\index.js"
+		]
+	}
+]

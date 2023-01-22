@@ -1,3 +1,11 @@
+/** CLI tools
+* @module bin/cli
+*/
+
+/**
+* @memberof module:bin/cli#
+* @member {object} commands
+*/
 const { program } = require('commander')
 
 program
