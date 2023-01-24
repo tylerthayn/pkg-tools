@@ -8,9 +8,9 @@ program
 	.name('pkg-tools')
 	.version('0.1.0')
 	.command('bump', 'package version bump')
-	.command('deps [cmd]', 'dependency tools')
-	.command('docs [type]', 'docs generator')
-	.command('pkg [cmd]', 'package.json tools')
+	.command('deps', 'dependency tools')
+	.command('docs', 'docs generator')
+	.command('pkg', 'package.json tools')
 
 program
   .command('copy')

@@ -4,8 +4,8 @@
 	"description": "Various development and management tools for design packages/repos.",
 	"main": "index.js",
 	"scripts": {
-		"generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "grunt",
+		"git": "git add * && git commit -m \"auto\" && git push"
 	},
 	"repository": {
 		"type": "git",
