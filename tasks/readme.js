@@ -20,7 +20,7 @@ let AST = require('../lib/AST')
 * @property {string} template - Template path
 */
 let defaults = {
-	ast: './tmp/package.ast',
+	ast: false, //'./tmp/package.ast',
 	output: './README.md',
 	template: './build/templates/README.md'
 }
@@ -33,17 +33,5 @@ module.exports = function (grunt) {
 
 		Docs(this.files.map(f => f.src), Extend({}, options, {log: grunt.log})).then(done).catch(done)
 
-		/*
-		AST.Load(this.files.map(f => f.src)).then(ast => {
-			if (options.ast) {
-				$fs.ensureDirSync($path.dirname($path.resolve(options.ast)))
-				$fs.writeFileSync(options.ast, JSON.stringify(ast, null, '\t'), 'utf-8')
-			}
-			require($path.resolve(__dirname, '../templates/readme/index.js'))(ast, JSON.parse($fs.readFileSync('./package.json', 'utf-8')), options).then(readme => {
-				$fs.writeFileSync(options.output, readme.toString(), 'utf-8')
-				done(true)
-			}).catch(done)
-		}).catch(done)
-		*/
 	})
 }
