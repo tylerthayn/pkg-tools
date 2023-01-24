@@ -10,13 +10,13 @@ program
 program.parse(process.argv)
 
 $fs.readdirSync($path.resolve(__dirname, '../share'), (error, entries) => {
-	if (error) throw error
+	if (error) {throw error}
 	entries.forEach(entry => {
-		if (entry == 'package.json') return
+		if (entry === 'package.json') {return}
 
 		let dest = $path.resolve('./', entry)
 		$fs.pathExists(dest, (error, exists) => {
-			if (error || exists) return
+			if (error || exists) {return}
 			$fs.copy($path.resolve(__dirname, '../share', entry), dest, (error) => {})
 		})
 	})

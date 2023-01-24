@@ -1,16 +1,13 @@
 /** CLI tools
-* @module bin/cli
+* @module cli
 */
 
-/**
-* @memberof module:bin/cli#
-* @member {object} commands
-*/
 const { program } = require('commander')
 
 program
 	.name('pkg-tools')
 	.version('0.1.0')
+	.command('bump', 'package version bump')
 	.command('deps [cmd]', 'dependency tools')
 	.command('docs [type]', 'docs generator')
 	.command('pkg [cmd]', 'package.json tools')

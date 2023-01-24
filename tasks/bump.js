@@ -6,7 +6,6 @@
  *
  * @module tasks/bump
  */
-
 module.exports = function(grunt) {
 	grunt.registerTask('bump', 'Bump the package version', function() {
 		let pkg = grunt.file.readJSON('./package.json')

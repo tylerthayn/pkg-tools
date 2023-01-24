@@ -1,53 +1,53 @@
 {
-  "name": "@tyler.thayn/pkg-tools",
-  "version": "0.1.0",
-  "description": "Various development and management tools for design packages/repos.",
-  "main": "index.js",
-  "scripts": {
-    "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tylerthayn/pkg-tools.git"
-  },
-  "keywords": [
-    "pkg",
-    "package",
-    "tools",
-    "build",
-    "templates",
-    "grunt",
-    "init",
-    "scaffolds"
-  ],
-  "author": "Tyler Thayn",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tylerthayn/pkg-tools/issues"
-  },
-  "homepage": "https://github.com/tylerthayn/pkg-tools",
-  "devDependencies": {
-    "grunt-contrib-clean": "^2.0.1",
-    "grunt-contrib-jshint": "^3.2.0",
-    "jsdoc": "^4.0.0"
-  },
-  "dependencies": {
-    "child_process": "^1.0.2",
-    "clipboardy": "^2.3.0",
-    "commander": "^10.0.0",
-    "docdash": "^2.0.1",
-    "fs": "0.0.1-security",
-    "glob": "^8.1.0",
-    "grunt-jsdoc": "^2.4.1",
-    "handlebars": "^4.7.7",
-    "jquery": "^3.6.3",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.4",
-    "path": "^0.12.7",
-    "sanitize-html": "^2.8.1",
-    "taffydb": "^2.7.3",
-    "underscore": "^1.13.6",
-    "util": "^0.12.5"
-  }
+	"name": "@tyler.thayn/pkg-tools",
+	"version": "1.0.0",
+	"description": "Various development and management tools for design packages/repos.",
+	"main": "index.js",
+	"scripts": {
+		"generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tylerthayn/pkg-tools.git"
+	},
+	"keywords": [
+		"pkg",
+		"package",
+		"tools",
+		"build",
+		"templates",
+		"grunt",
+		"init",
+		"scaffolds"
+	],
+	"author": "Tyler Thayn",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/tylerthayn/pkg-tools/issues"
+	},
+	"homepage": "https://github.com/tylerthayn/pkg-tools",
+	"devDependencies": {
+		"grunt-contrib-clean": "^2.0.1",
+		"grunt-contrib-jshint": "^3.2.0",
+		"jsdoc": "^4.0.0"
+	},
+	"dependencies": {
+		"child_process": "^1.0.2",
+		"clipboardy": "^2.3.0",
+		"commander": "^10.0.0",
+		"docdash": "^2.0.1",
+		"fs": "0.0.1-security",
+		"glob": "^8.1.0",
+		"grunt-jsdoc": "^2.4.1",
+		"handlebars": "^4.7.7",
+		"jquery": "^3.6.3",
+		"lodash": "^4.17.21",
+		"moment": "^2.29.4",
+		"path": "^0.12.7",
+		"sanitize-html": "^2.8.1",
+		"taffydb": "^2.7.3",
+		"underscore": "^1.13.6",
+		"util": "^0.12.5"
+	}
 }

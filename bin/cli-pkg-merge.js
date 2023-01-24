@@ -9,6 +9,8 @@ program
 
 program.parse(process.argv)
 
+$fs.copyFileSync('./package.json', './~package.json')
+
 $fs.readFile($path.resolve(__dirname, '../share/package.json'), 'utf-8', (error, contentsDefault) => {
 	if (error) throw error
 

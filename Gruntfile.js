@@ -1,19 +1,22 @@
 
 module.exports = function(grunt) {
 	grunt.initConfig({
-		clean: ['docs', 'README.md'],
+		bump: {},
+		clean: ['tmp', 'docs', 'README.md'],
 		jsdoc: {
 			docdash: {
-				src: ["bin/*.js", "tasks/*.js", "lib/**/*.js", "lib/*.js", "templates/readme/**/*.js", "templates/readme/*.js", "README.md"],
-				filter: (path) => {return path.includes('!')},
+				src: ["bin/*.js", "tasks/*.js", "lib/**/*.js", "lib/*.js", "templates/readme/**/*.js", "templates/readme/*.js"],
+				filter: (path) => {return !path.includes('!')},
 				options: {
 					"destination": "docs",
 					"template": "./templates/docdash",
-					"configure": "./templates/docs.dash.conf"
+					"configure": "./templates/docs.dash.conf",
+					"recurse": true
 				}
 			},
 			docstrap: {
-				src: ["bin/*.js", "tasks/*.js", "lib/**/*.js", "lib/*.js", "templates/readme/*.js", "README.md"],
+				src: ["bin/*.js", "tasks/*.js", "lib/**/*.js", "lib/*.js", "templates/readme/**/*.js", "templates/readme/*.js", "README.md"],
+				filter: (path) => {return !path.includes('!')},
 				options: {
 					"destination": "docs",
 					"template": "./templates/docstrap",
@@ -24,8 +27,7 @@ module.exports = function(grunt) {
 		jshint: {
 			default: {
 				src: ["bin/*.js", "tasks/*.js", "lib/*.js", "lib/**/*.js", "templates/readme/*.js", "README.md"],
-				filter: () => {return false},
-				//filter: function (path) {return !path.includes('!')},
+				filter: (path) => {return !path.includes('!')},
 				options: {
 					jshintrc: '.jshintrc'
 				}
@@ -34,18 +36,10 @@ module.exports = function(grunt) {
 		readme: {
 			default: {
 				src: ["bin/*.js", "tasks/*.js", "lib/**/*.js", "lib/*.js", "templates/readme/**/*.js", "templates/readme/*.js"],
+				filter: (path) => {return !path.includes('!')},
 				options: {
 					output: './README.md',
 					template: 'build/templates/README.md'
-				}
-			}
-		},
-		ttsdocs: {
-			default: {
-				src: ["tasks/docs.js", "tasks/bump.js", "D:/TTS/development/js.core/src", "D:/TTS/development/js.core/src/Array", "D:/TTS/development/js.core/src/Function", "D:/TTS/development/js.core/src/Object", "D:/TTS/development/js.core/src/String", "D:/TTS/development/js.core/src/Extensions"],
-				options: {
-					output: './docs',
-					template: './templates/docs'
 				}
 			}
 		}

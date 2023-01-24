@@ -1,1 +1,28 @@
-{}
+{
+    "author": {
+        "name": "Tyler Thayn",
+        "email": "tylertthayn@gmail.com",
+        "url": "https://github.com/tylerthayn"
+    },
+    "dependencies": {
+        "grunt-jsdoc": "^2.4.1",
+        "jsdoc": "^3.6.3",
+        "moment": "^2.29.4",
+        "sanitize-html": "^2.7.2",
+        "underscore": "^1.9.2"
+    },
+    "deprecated": false,
+    "devDependencies": {
+        "grunt": "^1.4.1"
+    },
+    "license": "MIT",
+    "scripts": {
+        "build": "grunt",
+        "docs": "grunt docs",
+        "git": "git add * && git commit -m \"auto\" && git push",
+        "prepare": "grunt default && npm run-script git",
+        "patch": "grunt patch",
+        "minor": "grunt minor",
+        "major": "grunt major"
+    }
+}
