@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 		},
 		jshint: {
 			default: {
-				src: ["bin/*.js", "tasks/*.js", "lib/*.js", "lib/**/*.js", "templates/readme/*.js", "README.md"],
+				src: ["bin/*.js", "tasks/*.js", "lib/*.js", "lib/**/*.js", "templates/readme/*.js"],
 				filter: (path) => {return !path.includes('!')},
 				options: {
 					jshintrc: '.jshintrc'
