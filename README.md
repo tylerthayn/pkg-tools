@@ -1,5 +1,5 @@
 # @tyler.thayn/pkg-tools
-[![Build Status](https://github.com/tylerthayn/pkg-tools/workflows/build/badge.svg)](https://github.com/tj/commander.js/actions?query=workflow%3A%22build%22)
+[![Build Status](https://github.com/tylerthayn/pkg-tools/workflows/build/badge.svg)](https://github.com/tylerthayn/pkg-tools/actions?query=workflow%3A%22build%22)
 [![NPM Version](http://img.shields.io/npm/v/@tyler.thayn/pkg-tools.svg?style=flat)](https://www.npmjs.org/package/@tyler.thayn/pkg-tools)
 [![NPM Downloads](https://img.shields.io/npm/dm/@tyler.thayn/pkg-tools.svg?style=flat)](https://npmcharts.com/compare/@tyler.thayn/pkg-tools?minimal=true)
 [![license](https://img.shields.io/npm/l/@tyler.thayn/pkg-tools.svg)](LICENSE)
