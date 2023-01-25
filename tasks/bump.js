@@ -4,9 +4,8 @@
  * @author Tyler Thayn <tylertthayn@gmail.com>
  * @license MIT
  *
- * @module pkg-tools/tasks/bump
+ * @module tasks/bump
  */
-
 module.exports = function(grunt) {
 	grunt.registerTask('bump', 'Bump the package version', function() {
 		let pkg = grunt.file.readJSON('./package.json')
