@@ -53,5 +53,5 @@ module.exports = function(grunt) {
 	grunt.registerTask('minor', ['bump:minor'])
 	grunt.registerTask('major', ['bump:major'])
 	grunt.registerTask('docs', ['jshint', 'readme', 'jsdoc:docdash'])
-	grunt.registerTask('default', ['clean', 'docs'])
+	grunt.registerTask('default', ['jshint'])
 }
