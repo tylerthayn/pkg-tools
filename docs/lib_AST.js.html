@@ -194,6 +194,7 @@ Define(AST, 'Load', (file) => {
 			let cp = ChildProcess.spawn(JsDoc, [...Array.Flatten(file), '-c', $path.resolve(__dirname, 'jsdoc.conf'), '-X'])
 			cp.stdout.on('data', chunk => {data += chunk.toString()})
 			cp.on('close', code => {
+console.log(data)
 				resolve(new AST(JSON.parse(data.toString())))
 			})
 			cp.on('error', reject)

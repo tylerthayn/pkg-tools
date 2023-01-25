@@ -62,6 +62,7 @@
 * @memberof module:cli#
 * @member {object} docs
 */
+let ChildProcess = require('child_process')
 let Docs = require('../lib/Docs')
 let Glob = require('glob')
 let $fs = require('fs-extra')
@@ -100,8 +101,15 @@ function Readme (files, options) {
 }
 
 function JsDoc (files, options) {
+	let conf = JSON.parse($fs.readFileSync($path.resolve(__dirname, 'jsdoc.conf'), 'utf-8'))
+	conf.opts.template = $path.resolve(__dirname, '../templates', options.type)
+	$fs.writeFileSync($path.resolve(__dirname, 'jsdoc.conf'), JSON.stringify(conf, null, '\t'), 'utf-8')
+	$fs.ensureDirSync($path.resolve(options.out))
 
-
+	let JsDoc = $path.resolve($path.dirname(process.argv[0]), 'jsdoc.cmd')
+	let cp = ChildProcess.spawn(JsDoc, [...Array.Flatten(files), '-c', $path.resolve(__dirname, 'jsdoc.conf'), '-d', $path.resolve(options.out)])
+	cp.on('close', code => {log('done')})
+	cp.on('error', (error) => {throw error})
 
 }
 

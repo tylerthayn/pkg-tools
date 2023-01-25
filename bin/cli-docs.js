@@ -50,10 +50,7 @@ function JsDoc (files, options) {
 
 	let JsDoc = $path.resolve($path.dirname(process.argv[0]), 'jsdoc.cmd')
 	let cp = ChildProcess.spawn(JsDoc, [...Array.Flatten(files), '-c', $path.resolve(__dirname, 'jsdoc.conf'), '-d', $path.resolve(options.out)])
-	cp.stdout.on('data', chunk => {data += chunk.toString()})
-	cp.on('close', code => {
-		log('done')
-	})
+	cp.on('close', code => {log('done')})
 	cp.on('error', (error) => {throw error})
 
 }

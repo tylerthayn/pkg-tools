@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 		},
 		jshint: {
 			default: {
-				src: ["bin/*.js", "tasks/*.js", "lib/*.js", "lib/**/*.js", "templates/readme/*.js", "README.md"],
+				src: ["bin/*.js", "tasks/*.js", "lib/*.js", "lib/**/*.js", "templates/readme/*.js"],
 				filter: (path) => {return !path.includes('!')},
 				options: {
 					jshintrc: '.jshintrc'
@@ -53,5 +53,5 @@ module.exports = function(grunt) {
 	grunt.registerTask('minor', ['bump:minor'])
 	grunt.registerTask('major', ['bump:major'])
 	grunt.registerTask('docs', ['jshint', 'readme', 'jsdoc:docdash'])
-	grunt.registerTask('default', ['clean', 'docs'])
+	grunt.registerTask('default', ['jshint'])
 }
