@@ -1,4 +1,5 @@
-let $fs = require('fs')
+let $fs = require('fs-extra')
+let $path = require('path')
 let Handlebars = require('handlebars')
 
 let Keys = {
@@ -49,9 +50,14 @@ module.exports = (ast, options) => {
 		if (typeof options.pkg === 'string') {
 			options.pkg = JSON.parse($fs.readFileSync(options.pkg, 'utf-8'))
 		}
+		let template = $fs.readFileSync(options.template, 'utf-8')
 
-		let render = Handlebars.compile($fs.readFileSync(options.template, 'utf-8'))
-		$fs.writeFile(options.output, render({ast: ast, outline: ast.Outline(true), pkg: options.pkg}), 'utf-8', error => {
+		let render = Handlebars.compile(template)
+
+		let s = render({ast: ast, outline: ast.Outline(true), pkg: options.pkg})
+
+		$fs.ensureDirSync($path.dirname($path.resolve(options.output)))
+		$fs.writeFile(options.output, s, 'utf-8', error => {
 			if (error) return reject(error)
 			resolve()
 		})

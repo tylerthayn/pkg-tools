@@ -1,8 +1,11 @@
 {
 	"name": "@tyler.thayn/pkg-tools",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Various development and management tools for design packages/repos.",
 	"main": "index.js",
+	"bin": {
+		"pkg-tools": "./bin/cli.js"
+	},
 	"scripts": {
 		"build": "grunt",
 		"git": "git add * && git commit -m \"auto\" && git push"
@@ -33,21 +36,20 @@
 		"jsdoc": "^4.0.0"
 	},
 	"dependencies": {
-		"child_process": "^1.0.2",
-		"clipboardy": "^2.3.0",
+		"@jsdoc/salty": "^0.2.3",
+		"@tyler.thayn/js.core": "^0.13.14",
 		"commander": "^10.0.0",
-		"docdash": "^2.0.1",
-		"fs": "0.0.1-security",
+		"deasync": "^0.1.28",
+		"fs-extra": "^11.1.0",
 		"glob": "^8.1.0",
 		"grunt-jsdoc": "^2.4.1",
 		"handlebars": "^4.7.7",
 		"jquery": "^3.6.3",
+		"latest-version": "5.1.0",
 		"lodash": "^4.17.21",
 		"moment": "^2.29.4",
-		"path": "^0.12.7",
 		"sanitize-html": "^2.8.1",
 		"taffydb": "^2.7.3",
-		"underscore": "^1.13.6",
-		"util": "^0.12.5"
+		"underscore": "^1.13.6"
 	}
 }

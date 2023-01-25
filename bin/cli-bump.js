@@ -1,6 +1,4 @@
-/** CLI bump tool
-* @module cli
-*/
+#!/usr/bin/env node
 
 /**
 * @memberof module:cli#
@@ -22,6 +20,7 @@ program
 	.option('--patch', 'bump patch version', false)
 	.option('--pkg <pkg>', 'path to package.json', './package.json')
 	.option('--repo', 'start with package latest version released', false)
+	.option('-t, --test', 'test mode, no actual modifications', false)
 
 program.parse(process.argv)
 
@@ -44,13 +43,16 @@ if (options.patch) {
 	_version[1] = 0
 	_version[2] = 0
 } else {
-	throw new Error('No version level provided')
+	console.log('No version level provided')
+	process.exit()
 }
 _version = _version.join('.')
 
 log(version + ' => ' + _version)
 
 pkg.version = _version
-$fs.writeFileSync($path.resolve(options.pkg), JSON.stringify(pkg, null, '\t'), 'utf-8')
 
+if (!options.test) {
+	$fs.writeFileSync($path.resolve(options.pkg), JSON.stringify(pkg, null, '\t'), 'utf-8')
+}
 

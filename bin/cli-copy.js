@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 let Glob = require('glob')
 let $fs = require('fs-extra')
 let $path = require('path')

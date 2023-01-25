@@ -50,6 +50,9 @@ pkg-tools --help
 <ul>
 <li><b>bump</b>  {object}</li>
 
+
+<li><b>docs</b>  {object}</li>
+
 </ul>
 
 ### tasks/bump

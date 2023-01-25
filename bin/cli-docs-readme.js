@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 let Glob = require('glob')
 let Docs = require('../lib/Docs')
 const { program } = require('commander')

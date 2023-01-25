@@ -1,6 +1,7 @@
 /*global env: true */
 'use strict';
 
+
 var doop = require('jsdoc/util/doop');
 var fs = require('jsdoc/fs');
 var helper = require('jsdoc/util/templateHelper');
@@ -358,12 +359,52 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
                     displayName = item.name;
                 }
                 itemsNav += linktoFn(item.longname, displayName.replace(/\b(module|event):/g, ''));
+//              if (docdash.static && members.find(function (m) { return m.scope === 'static'; } )) {
 
-                if (docdash.static && members.find(function (m) { return m.scope === 'static'; } )) {
+					itemsNav += '<ul class="inner members">'
+					find({kind:'member', memberof: item.longname}).filter(function (m) { return m.scope === 'inner'; } ).forEach(member => {
+						itemsNav += "<li data-scope='inner' data-type='member'";
+                        if(docdash.collapse)
+                            itemsNav += " style='display: none;'";
+                        itemsNav += ">";
+                        itemsNav += linkto(member.longname, member.name);
+                        itemsNav += "</li>";
+					})
+					itemsNav += '</ul>'
+
+					itemsNav += '<ul class="static members">'
+					//let _members = find({kind:'function', memberof: item.longname})
+					find({kind:'member', memberof: item.longname}).filter(function (m) { return m.scope === 'static'; } ).forEach(member => {
+						itemsNav += "<li data-scope='static' data-type='member'";
+                        if(docdash.collapse)
+                            itemsNav += " style='display: none;'";
+                        itemsNav += ">";
+                        itemsNav += linkto(member.longname, member.name);
+                        itemsNav += "</li>";
+					})
+					//_members = find({kind:'function', memberof: item.longname})
+
+					find({kind:'function', memberof: item.longname}).filter(function (m) { return m.scope === 'static'; } ).forEach(method => {
+						var navItem = '';
+                        var navItemLink = linkto(method.longname, method.name);
+
+                        navItem += "<li data-scope='static' data-type='method'";
+                        if(docdash.collapse)
+                            navItem += " style='display: none;'";
+                        navItem += ">";
+                        navItem += navItemLink;
+                        navItem += "</li>";
+
+                        itemsNav += navItem;
+					})
+
+					itemsNav += '</ul>';
+
+/*
                     itemsNav += "<ul class='members'>";
 
                     members.forEach(function (member) {
-                        if (!member.scope === 'static') return;
+                        //if (!member.scope === 'static') return;
                         itemsNav += "<li data-type='member'";
                         if(docdash.collapse)
                             itemsNav += " style='display: none;'";
@@ -373,8 +414,51 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
                     });
 
                     itemsNav += "</ul>";
-                }
 
+*/
+
+					itemsNav += '<ul class="instance members">'
+					members.filter(function (m) { return m.scope === 'instance'; } ).forEach(member => {
+						itemsNav += "<li data-scope='instance' data-type='member'";
+                        if(docdash.collapse)
+                            itemsNav += " style='display: none;'";
+                        itemsNav += ">";
+                        itemsNav += linkto(member.longname, member.name);
+                        itemsNav += "</li>";
+					})
+					methods.filter(function (m) { return m.scope === 'instance'; } ).forEach(method => {
+						var navItem = '';
+                        var navItemLink = linkto(method.longname, method.name);
+
+                        navItem += "<li data-scope='instance' data-type='method'";
+                        if(docdash.collapse)
+                            navItem += " style='display: none;'";
+                        navItem += ">";
+                        navItem += navItemLink;
+                        navItem += "</li>";
+
+                        itemsNav += navItem;
+					})
+					itemsNav += '</ul>';
+
+/*
+
+                    itemsNav += "<ul class='members'>";
+
+                    members.forEach(function (member) {
+                        //if (!member.scope === 'static') return;
+                        itemsNav += "<li data-type='member'";
+                        if(docdash.collapse)
+                            itemsNav += " style='display: none;'";
+                        itemsNav += ">";
+                        itemsNav += linkto(member.longname, member.name);
+                        itemsNav += "</li>";
+                    });
+
+                    itemsNav += "</ul>";
+*/
+                //}
+/*
                 if (methods.length) {
                     itemsNav += "<ul class='methods'>";
 
@@ -397,7 +481,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
 
                     itemsNav += "</ul>";
                 }
-
+*/
                 itemsSeen[item.longname] = true;
             }
             itemsNav += '</li>';
@@ -753,6 +837,8 @@ exports.publish = function(taffyData, opts, tutorials) {
             [{kind: 'mainpage', readme: opts.readme, longname: (opts.mainpagetitle) ? opts.mainpagetitle : 'Main Page'}]
         ).concat(files),
     indexUrl);
+
+	view.nav = `<i class="material-icons PinMenu">push_pin</i>\n` + view.nav
 
     // common nav generation, no need for templating here, we already have full html
     if (docdash.commonNav) {

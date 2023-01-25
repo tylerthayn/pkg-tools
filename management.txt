@@ -1,0 +1,8 @@
+
+
+Ideas
+=====
+- package.json
+	- Check if repo listed and repo exists to update as well as issues and homepage
+
+
