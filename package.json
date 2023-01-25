@@ -37,7 +37,7 @@
 	},
 	"dependencies": {
 		"@jsdoc/salty": "^0.2.3",
-		"@tyler.thayn/js.core": "^0.13.14",
+		"@tyler.thayn/js.core": "^0.13.15",
 		"commander": "^10.0.0",
 		"deasync": "^0.1.28",
 		"fs-extra": "^11.1.0",
